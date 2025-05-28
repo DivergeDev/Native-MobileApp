@@ -1,13 +1,13 @@
-import { GluestackUIProvider, Box, View as GView } from '@gluestack-ui/themed';
+import { GluestackUIProvider, Box } from '@gluestack-ui/themed';
 import { config } from '@gluestack-ui/config';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeScreen } from './src/screens/HomeScreen';
-import { CommunitiesScreen } from './src/screens/CommunitiesScreen';
-import { DivergeScreen } from './src/screens/DivergeScreen';
-import { DMScreen } from './src/screens/DMScreen';
-import { ProfileScreen } from './src/screens/ProfileScreen';
-import { Home, Users, Mic2, MessageSquare, User } from 'lucide-react-native';
+import Home from './app/home';
+import Communities from './app/communities';
+import Diverge from './app/diverge';
+import DM from './app/dm';
+import Profile from './app/profile';
+import { Home as HomeIcon, Users, Mic2, MessageSquare, User } from 'lucide-react-native';
 import Animated, { withSpring, useAnimatedStyle } from 'react-native-reanimated';
 import { StyleSheet } from 'react-native';
 
@@ -36,11 +36,7 @@ const TabBarIcon = ({ Icon, focused }: { Icon: any; focused: boolean }) => {
   });
 
   return (
-    <Box
-      alignItems="center"
-      justifyContent="center"
-      py="$3"
-    >
+    <Box alignItems="center" justifyContent="center" py="$3">
       <Animated.View style={animatedStyle}>
         <Box>
           <Icon 
@@ -77,42 +73,37 @@ export default function App() {
         >
           <Tab.Screen
             name="Home"
-            component={HomeScreen}
+            component={Home}
             options={{
-              tabBarIcon: ({ focused }) => <TabBarIcon Icon={Home} focused={focused} />,
-              tabBarShowLabel: false,
+              tabBarIcon: ({ focused }) => <TabBarIcon Icon={HomeIcon} focused={focused} />, tabBarShowLabel: false,
             }}
           />
           <Tab.Screen
             name="Communities"
-            component={CommunitiesScreen}
+            component={Communities}
             options={{
-              tabBarIcon: ({ focused }) => <TabBarIcon Icon={Users} focused={focused} />,
-              tabBarShowLabel: false,
+              tabBarIcon: ({ focused }) => <TabBarIcon Icon={Users} focused={focused} />, tabBarShowLabel: false,
             }}
           />
           <Tab.Screen
             name="Diverge"
-            component={DivergeScreen}
+            component={Diverge}
             options={{
-              tabBarIcon: ({ focused }) => <TabBarIcon Icon={Mic2} focused={focused} />,
-              tabBarShowLabel: false,
+              tabBarIcon: ({ focused }) => <TabBarIcon Icon={Mic2} focused={focused} />, tabBarShowLabel: false,
             }}
           />
           <Tab.Screen
             name="DM"
-            component={DMScreen}
+            component={DM}
             options={{
-              tabBarIcon: ({ focused }) => <TabBarIcon Icon={MessageSquare} focused={focused} />,
-              tabBarShowLabel: false,
+              tabBarIcon: ({ focused }) => <TabBarIcon Icon={MessageSquare} focused={focused} />, tabBarShowLabel: false,
             }}
           />
           <Tab.Screen
             name="Profile"
-            component={ProfileScreen}
+            component={Profile}
             options={{
-              tabBarIcon: ({ focused }) => <TabBarIcon Icon={User} focused={focused} />,
-              tabBarShowLabel: false,
+              tabBarIcon: ({ focused }) => <TabBarIcon Icon={User} focused={focused} />, tabBarShowLabel: false,
             }}
           />
         </Tab.Navigator>
